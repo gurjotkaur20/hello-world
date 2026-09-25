@@ -1,0 +1,106 @@
+# POST Events
+
+http.post./post-story:
+  fn: post.post_story
+  authn: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+            content:
+              type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.post./post-feedback:
+  fn: post.post_feedback
+  authn: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            rating:
+              type: integer
+            comment:
+              type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.post./post-bio:
+  fn: post.post_bio
+  authn: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.post./post-message:
+  fn: post.post_message
+  authn: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            sender:
+              type: string
+            text:
+              type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.post./post-comment:
+  fn: post.post_comment
+  authn: false
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            author:
+              type: string
+            body:
+              type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object

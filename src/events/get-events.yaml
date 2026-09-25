@@ -1,0 +1,86 @@
+# GET Events
+
+http.get./get-name:
+  fn: get.get_name
+  authn: false
+  params:
+    - name: firstName
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: lastName
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.get./get-age:
+  fn: get.get_age
+  authn: false
+  params:
+    - name: birthYear
+      in: query
+      required: true
+      schema:
+        type: integer
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.get./get-hobby:
+  fn: get.get_hobby
+  authn: false
+  params:
+    - name: category
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.get./get-city:
+  fn: get.get_city
+  authn: false
+  params:
+    - name: country
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
+
+http.get./get-email:
+  fn: get.get_email
+  authn: false
+  params:
+    - name: username
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object
