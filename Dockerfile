@@ -18,6 +18,7 @@ RUN apk add --no-cache rsync
 COPY src ./src
 COPY config ./config
 COPY tsconfig.json ./
+COPY .swcrc ./
 
 # Run prisma generate
 RUN pnpm prisma-generate || true
