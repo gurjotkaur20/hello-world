@@ -17,7 +17,6 @@ RUN apk add --no-cache rsync
 # Copy source code and configuration
 COPY src ./src
 COPY config ./config
-COPY tsconfig.json ./
 COPY .swcrc ./
 
 # Run prisma generate
