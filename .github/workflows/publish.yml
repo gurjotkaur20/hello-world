@@ -11,9 +11,9 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
      
-# Permissions required for GitHub Container Registry access
+# Permissions required for GitHub Container Registry access and Git operations
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 # Define the build and push job
@@ -43,3 +43,19 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      # Step 4: Update deployment.yaml with new image tag
+      - name: Update Deployment Image Tag
+        run: |
+          IMAGE_TAG="${{ github.sha }}"
+          sed -i "s|image: ghcr.io/.*/hello-world:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG}|" k8s/deployment.yaml
+          cat k8s/deployment.yaml
+
+      # Step 5: Commit and push changes back to repository
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add k8s/deployment.yaml
+          git commit -m "chore: update image tag to ${{ github.sha }}" || echo "No changes to commit"
+          git push origin master
