@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: ghcr.io/gurjotkaur20/hello-world:latest
+          image: ghcr.io/gurjotkaur20/hello-world:v0.1
           imagePullPolicy: Always
           ports:
             - name: http
