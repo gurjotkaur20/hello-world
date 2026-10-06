@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vapd-online-cert
+  namespace: obs
+spec:
+  secretName: vapd-online-cert-secret
+  dnsNames:
+    - grafana.vapd.online
+    - app.vapd.online
+    - argocd.vapd.online
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
